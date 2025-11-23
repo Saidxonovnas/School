@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To'lovni Tasdiqlash | Saidxonovnas School</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Poppins:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .payment-wrapper {
+            min-height: 80vh;
+            padding: 50px 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .payment-details {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .payment-details h3 {
+            color: var(--color-secondary);
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+
+        .payment-details p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .payment-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .payment-btn {
+            background-color: var(--color-text);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        .payment-btn:hover {
+            background-color: #333;
+        }
+
+        /* Brend ranglari */
+        .payme-btn {
+            background-color: #1FB3F7;
+        }
+
+        .click-btn {
+            background-color: #008DFF;
+        }
+
+        .humo-uzcard-btn {
+            background-color: #F7931A;
+        }
+
+        .payme-btn:hover {
+            background-color: #108acb;
+        }
+
+        .click-btn:hover {
+            background-color: #006dd9;
+        }
+
+        .humo-uzcard-btn:hover {
+            background-color: #d88117;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="main-header">
+        <div class="logo">
+            <img src="logo.png" alt="Logo" class="logo-img">
+            <span class="logo-text">Saidxonovnas School</span>
+        </div>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="header-right">
+            <nav class="main-nav" id="mainNav">
+                <ul>
+                    <li><a href="index.html#home">Bosh Sahifa</a></li>
+                    <li><a href="register.html">Ro'yxatdan O'tish</a></li>
+                    <li><a href="index.html#contact">Aloqa</a></li>
+                </ul>
+            </nav>
+            <a href="register.html" class="action-btn desktop-only">Ro'yxatdan O'tish</a>
+        </div>
+    </header>
+
+    <section class="payment-wrapper section-center">
+        <h2>💳 To'lovni Tasdiqlash</h2>
+        <p>Kursga ro'yxatdan o'tganingiz uchun rahmat. Iltimos, quyidagi ma'lumotlarni tekshiring va o'zingizga qulay
+            to'lov usulini tanlang.</p>
+
+        <div class="payment-details">
+            <p><strong>Ism:</strong> <span id="payment-name">...</span></p>
+            <p><strong>Tanlangan Kurs:</strong> <span id="payment-course">...</span></p>
+            <h3>To'lanadigan Summa: <span id="payment-price">...</span></h3>
+
+            <div class="payment-options">
+                <a href="#" class="payment-btn payme-btn">PAYME orqali to'lash</a>
+                <a href="#" class="payment-btn click-btn">CLICK orqali to'lash</a>
+                <a href="#" class="payment-btn humo-uzcard-btn">HUMO / UZCARD orqali to'lash</a>
+            </div>
+
+            <a href="register.html" style="margin-top: 20px; display: block; color: var(--color-primary);">⬅️
+                Ma'lumotlarni o'zgartirish</a>
+        </div>
+    </section>
+
+    <footer class="main-footer">
+        <p>&copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.</p>
+        <div class="social-links">
+            <a href="https://t.me/Saidxonovnas_School" target="_blank">Telegram</a>
+            <a href="https://instagram.com/Saidxonovnas_School" target="_blank">Instagram</a>
+        </div>
+    </footer>
+
+    <script src="scribt.js"></script>
+
+    <script>
+        // NOTE: Sizning haqiqiy to'lov Aggregator linklaringizni shu yerga kiriting!
+        const PAYME_BASE_URL = 'https://payme.uz/invoice?amount=';
+        const CLICK_BASE_URL = 'https://click.uz/merchant/?amount=';
+        const UZCARD_HUMO_BASE_URL = 'https://other-aggregator.uz/pay?amount=';
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // 1. Ma'lumotlarni olish
+            const name = localStorage.getItem('regName') || 'Nomaʼlum';
+            const course = localStorage.getItem('regCourse') || 'Tanlanmagan';
+            const formattedPrice = localStorage.getItem('regPrice') || '0 UZS';
+
+            // Narxni faqat raqam (UZS) sifatida olish
+            const rawPrice = localStorage.getItem('regPrice')?.replace(/[^0-9]/g, '') || '0';
+
+            // 2. Ma'lumotlarni HTML ga joylash
+            document.getElementById('payment-name').textContent = name;
+            document.getElementById('payment-course').textContent = course;
+            document.getElementById('payment-price').textContent = formattedPrice;
+
+            // 3. To'lov tugmalarini sozlash
+            const amountInTiyin = parseInt(rawPrice) * 100; // Ko'pincha aggregator tiyinlarda talab qiladi
+
+            document.querySelector('.payme-btn').href = `${PAYME_BASE_URL}${amountInTiyin}`;
+            document.querySelector('.click-btn').href = `${CLICK_BASE_URL}${amountInTiyin}`;
+            document.querySelector('.humo-uzcard-btn').href = `${UZCARD_HUMO_BASE_URL}${amountInTiyin}`;
+        });
+    </script>
+</body>
+
+</html>
