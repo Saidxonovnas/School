@@ -62,30 +62,13 @@
             background-color: #333;
         }
 
-        /* Brend ranglari */
-        .payme-btn {
-            background-color: #1FB3F7;
-        }
-
-        .click-btn {
-            background-color: #008DFF;
-        }
-
-        .humo-uzcard-btn {
-            background-color: #F7931A;
-        }
-
-        .payme-btn:hover {
-            background-color: #108acb;
-        }
-
-        .click-btn:hover {
-            background-color: #006dd9;
-        }
-
-        .humo-uzcard-btn:hover {
-            background-color: #d88117;
-        }
+        .payme-btn { background-color: #1FB3F7; } 
+        .click-btn { background-color: #008DFF; } 
+        .humo-uzcard-btn { background-color: #F7931A; } 
+        
+        .payme-btn:hover { background-color: #108acb; }
+        .click-btn:hover { background-color: #006dd9; }
+        .humo-uzcard-btn:hover { background-color: #d88117; }
     </style>
 </head>
 
@@ -114,22 +97,20 @@
 
     <section class="payment-wrapper section-center">
         <h2>💳 To'lovni Tasdiqlash</h2>
-        <p>Kursga ro'yxatdan o'tganingiz uchun rahmat. Iltimos, quyidagi ma'lumotlarni tekshiring va o'zingizga qulay
-            to'lov usulini tanlang.</p>
+        <p>Kursga ro'yxatdan o'tganingiz uchun rahmat. Iltimos, quyidagi ma'lumotlarni tekshiring va o'zingizga qulay to'lov usulini tanlang.</p>
 
         <div class="payment-details">
             <p><strong>Ism:</strong> <span id="payment-name">...</span></p>
             <p><strong>Tanlangan Kurs:</strong> <span id="payment-course">...</span></p>
             <h3>To'lanadigan Summa: <span id="payment-price">...</span></h3>
-
+            
             <div class="payment-options">
                 <a href="#" class="payment-btn payme-btn">PAYME orqali to'lash</a>
                 <a href="#" class="payment-btn click-btn">CLICK orqali to'lash</a>
                 <a href="#" class="payment-btn humo-uzcard-btn">HUMO / UZCARD orqali to'lash</a>
             </div>
-
-            <a href="register.html" style="margin-top: 20px; display: block; color: var(--color-primary);">⬅️
-                Ma'lumotlarni o'zgartirish</a>
+            
+            <a href="register.html" style="margin-top: 20px; display: block; color: var(--color-primary);">⬅️ Ma'lumotlarni o'zgartirish</a>
         </div>
     </section>
 
@@ -142,33 +123,34 @@
     </footer>
 
     <script src="scribt.js"></script>
-
+    
     <script>
-        // NOTE: Sizning haqiqiy to'lov Aggregator linklaringizni shu yerga kiriting!
-        const PAYME_BASE_URL = 'https://payme.uz/invoice?amount=';
-        const CLICK_BASE_URL = 'https://click.uz/merchant/?amount=';
-        const UZCARD_HUMO_BASE_URL = 'https://other-aggregator.uz/pay?amount=';
+        // NOTE: BU YERGA AGGREGATORINGIZDAN OLINGAN HAQIQIY BAZAVIY LINKLARNI KIRITING!
+        const PAYME_BASE_URL = 'https://payme.uz/switch/invoices?m=M12345678&amount='; 
+        const CLICK_BASE_URL = 'https://my.click.uz/services/pay?merchant_id=I001&service_id=S101&amount='; 
+        const UZCARD_HUMO_BASE_URL = 'https://your-universal-pay-system.uz/pay?amount='; 
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', function() {
             // 1. Ma'lumotlarni olish
             const name = localStorage.getItem('regName') || 'Nomaʼlum';
             const course = localStorage.getItem('regCourse') || 'Tanlanmagan';
             const formattedPrice = localStorage.getItem('regPrice') || '0 UZS';
+            
+            const rawPrice = localStorage.getItem('regPrice')?.replace(/[^0-9]/g, '') || '0'; 
 
-            // Narxni faqat raqam (UZS) sifatida olish
-            const rawPrice = localStorage.getItem('regPrice')?.replace(/[^0-9]/g, '') || '0';
+            // 2. Narxni to'g'ri formatlarga aylantirish
+            const amountInTiyin = parseInt(rawPrice) * 100; // Payme uchun
+            const amountInUZS = parseInt(rawPrice); // Click/Humo uchun
 
-            // 2. Ma'lumotlarni HTML ga joylash
+            // 3. Ma'lumotlarni HTML ga joylash
             document.getElementById('payment-name').textContent = name;
             document.getElementById('payment-course').textContent = course;
             document.getElementById('payment-price').textContent = formattedPrice;
-
-            // 3. To'lov tugmalarini sozlash
-            const amountInTiyin = parseInt(rawPrice) * 100; // Ko'pincha aggregator tiyinlarda talab qiladi
-
+            
+            // 4. To'lov tugmalarini sozlash
             document.querySelector('.payme-btn').href = `${PAYME_BASE_URL}${amountInTiyin}`;
-            document.querySelector('.click-btn').href = `${CLICK_BASE_URL}${amountInTiyin}`;
-            document.querySelector('.humo-uzcard-btn').href = `${UZCARD_HUMO_BASE_URL}${amountInTiyin}`;
+            document.querySelector('.click-btn').href = `${CLICK_BASE_URL}${amountInUZS}`;
+            document.querySelector('.humo-uzcard-btn').href = `${UZCARD_HUMO_BASE_URL}${amountInUZS}`;
         });
     </script>
 </body>
