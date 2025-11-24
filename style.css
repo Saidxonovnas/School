@@ -141,7 +141,7 @@ a {
 }
 
 .promo-box h2 {
-    margin-bottom: 5px;
+    margin-bottom: 5px; 
 }
 
 .promo-box p {
@@ -208,8 +208,7 @@ a {
 }
 
 .register-form input,
-.register-form select {
-    /* Select uchun uslub qo'shildi */
+.register-form select { /* Select uchun uslub qo'shildi */
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 8px;
