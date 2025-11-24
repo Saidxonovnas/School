@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const registerForm = document.getElementById('register-form'); 
 
     // --- 1. Hamburger menyu funksiyasi (MUAMMO HAL QILINDI) ---
-    // Bu kod register.html va index.html da ishlaydi
     if (menuToggle && mainNav) { 
         menuToggle.addEventListener('click', function () { 
             mainNav.classList.toggle('active'); 
@@ -47,7 +46,7 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('regPhone', phone); 
             localStorage.setItem('regPrice', formattedPrice); 
             
-            // MUHIM: 50ms kutish beriladi, shunda ma'lumot saqlanib ulguradi va sahifaga o'tadi
+            // MUHIM: Qisqa kutish (50ms) beriladi, shunda ma'lumot saqlanib ulguradi va sahifaga o'tadi.
             setTimeout(() => {
                 window.location.href = PAYMENT_PAGE_URL; 
             }, 50); 
