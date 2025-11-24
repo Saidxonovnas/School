@@ -288,14 +288,20 @@ a {
         z-index: 999;
     }
 
+    /* MUHIM: Menyuni faollashtirish uchun uslub */
     .main-nav.active {
-        display: block;
+        display: flex; 
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 30px;
     }
 
     .main-nav ul {
         flex-direction: column;
         gap: 30px;
         padding: 0;
+        text-align: center;
     }
 
     .main-nav a {
