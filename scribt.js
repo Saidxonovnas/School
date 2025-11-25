@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const mainNav = document.getElementById('mainNav'); 
     const registerForm = document.getElementById('register-form'); 
 
-    // --- 1. Hamburger menyu funksiyasi (MUAMMO HAL QILINDI) ---
+    // --- 1. Hamburger menyu funksiyasi ---
     if (menuToggle && mainNav) { 
         menuToggle.addEventListener('click', function () { 
             mainNav.classList.toggle('active'); 
@@ -29,7 +29,12 @@ document.addEventListener('DOMContentLoaded', function () {
             const name = document.getElementById('user-name').value;
             const courseSelect = document.getElementById('user-course');
             const course = courseSelect.value;
-            const phone = document.getElementById('user-phone').value;
+            
+            // Telefon raqamini olish va +998 bilan to'g'irlash
+            const rawPhone = document.getElementById('user-phone').value.replace(/\D/g, ''); // Faqat raqamlarni olamiz
+            
+            // Agar foydalanuvchi 9 raqam (masalan, 901234567) kirgizgan bo'lsa, +998 ni qo'shamiz
+            const phone = (rawPhone.length === 9) ? `+998${rawPhone}` : rawPhone; 
             
             const selectedOption = courseSelect.options[courseSelect.selectedIndex];
             const priceUZS = selectedOption.getAttribute('data-price');
@@ -46,7 +51,9 @@ document.addEventListener('DOMContentLoaded', function () {
             localStorage.setItem('regPhone', phone); 
             localStorage.setItem('regPrice', formattedPrice); 
             
-            // MUHIM: Qisqa kutish (50ms) beriladi, shunda ma'lumot saqlanib ulguradi va sahifaga o'tadi.
+            console.log(`Foydalanuvchi Ro'yxatdan O'tdi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
+
+            // Ma'lumot saqlanib ulgurishi uchun qisqa kutish (50ms) beriladi, keyin sahifaga o'tiladi
             setTimeout(() => {
                 window.location.href = PAYMENT_PAGE_URL; 
             }, 50); 
