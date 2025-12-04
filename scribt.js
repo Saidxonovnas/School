@@ -37,13 +37,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const phone = (rawPhone.length === 9) ? `+998${rawPhone}` : rawPhone; 
             
             const selectedOption = courseSelect.options[courseSelect.selectedIndex];
-            const priceUZS = selectedOption.getAttribute('data-price');
             
+            // data-price ni raqam sifatida olish (chegirmali narx)
+            const priceValue = parseFloat(selectedOption.getAttribute('data-price')); 
+            
+            // Raqamni UZS formatida formatlash
             const formattedPrice = new Intl.NumberFormat('uz-UZ', { 
                 style: 'currency', 
                 currency: 'UZS', 
                 minimumFractionDigits: 0 
-            }).format(priceUZS);
+            }).format(priceValue); 
 
             // Ma'lumotlarni localStoragga saqlash
             localStorage.setItem('regName', name); 
