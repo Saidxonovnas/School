@@ -31,17 +31,16 @@ document.addEventListener('DOMContentLoaded', function () {
             const course = courseSelect.value;
             
             // Telefon raqamini olish va +998 bilan to'g'irlash
-            const rawPhone = document.getElementById('user-phone').value.replace(/\D/g, ''); // Faqat raqamlarni olamiz
+            const rawPhone = document.getElementById('user-phone').value.replace(/\D/g, ''); 
             
             // Agar foydalanuvchi 9 raqam (masalan, 901234567) kirgizgan bo'lsa, +998 ni qo'shamiz
             const phone = (rawPhone.length === 9) ? `+998${rawPhone}` : rawPhone; 
             
             const selectedOption = courseSelect.options[courseSelect.selectedIndex];
             
-            // data-price ni raqam sifatida olish (chegirmali narx)
+            // data-price ni raqam sifatida olish va formatlash
             const priceValue = parseFloat(selectedOption.getAttribute('data-price')); 
             
-            // Raqamni UZS formatida formatlash
             const formattedPrice = new Intl.NumberFormat('uz-UZ', { 
                 style: 'currency', 
                 currency: 'UZS', 
