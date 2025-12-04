@@ -88,14 +88,12 @@
             const phoneInput = document.getElementById('user-phone');
 
             phoneInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, ''); // Raqam bo'lmagan barcha belgilarni olib tashlash
+                let value = e.target.value.replace(/\D/g, ''); 
 
-                // 998 kodini majburlash (O'zbekiston kodi)
                 if (value.startsWith('998')) {
-                    value = value.slice(0, 12); // Maksimal uzunlik (998 90 123 45 67)
+                    value = value.slice(0, 12); 
                 } else if (value.length > 0) {
-                     // Agar foydalanuvchi 998 bilan boshlamagan bo'lsa, avtomatik 998 ni qo'shamiz (yoki xato oldini olamiz)
-                     if (value.length <= 9) { // 901234567 formatida kelsa
+                     if (value.length <= 9) { 
                          value = '998' + value;
                      }
                 }
@@ -103,19 +101,16 @@
                 let formattedValue = '';
                 
                 if (value.length >= 3) {
-                    // +998 (XX) XXX-XX-XX formatini yasash
                     formattedValue = '+998';
                     
                     if (value.length > 3) formattedValue += ' ';
 
-                    // (XX)
                     if (value.length > 5) {
                         formattedValue += `(${value.slice(3, 5)})`;
                     } else if (value.length > 3) {
                         formattedValue += `(${value.slice(3)}`;
                     }
 
-                    // XXX-XX-XX
                     if (value.length > 5) {
                         formattedValue += ` ${value.slice(5, 8)}`;
                     }
@@ -128,7 +123,7 @@
                         formattedValue += `-${value.slice(10, 12)}`;
                     }
                 } else {
-                    formattedValue = value; // 998 kabi qoldiqlar bo'lsa
+                    formattedValue = value; 
                 }
 
                 e.target.value = formattedValue.trim();
