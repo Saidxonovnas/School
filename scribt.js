@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- 2. Formani Yuborish (register.html sahifasida ishlaydi) ---
     if (registerForm) {
         registerForm.addEventListener('submit', function (e) { 
-            e.preventDefault(); 
+            // e.preventDefault(); qatori olib tashlandi, toki Formspree'ga ma'lumot yuborilsin.
 
             const name = document.getElementById('user-name').value;
             const courseSelect = document.getElementById('user-course');
@@ -100,18 +100,15 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const formattedPrice = formatPrice(priceToPay); // Narxni formatlash
 
-            // Ma'lumotlarni localStoragga saqlash
+            // Ma'lumotlarni localStoragga saqlash (payment.html sahifasi uchun zarur)
             localStorage.setItem('regName', name); 
             localStorage.setItem('regCourse', course); 
             localStorage.setItem('regPhone', phone); 
             localStorage.setItem('regPrice', formattedPrice); 
             
-            console.log(`Foydalanuvchi Ro'yxatdan O'tdi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
+            console.log(`Foydalanuvchi Ro'yxatdan O'tish Ma'lumotlarini Saqladi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
 
-            // Ma'lumot saqlanib ulgurishi uchun qisqa kutish (50ms) beriladi, keyin sahifaga o'tiladi
-            setTimeout(() => {
-                window.location.href = PAYMENT_PAGE_URL; 
-            }, 50); 
+            // Oldingi setTimeout va window.location.href qismi olib tashlandi, chunki Formspree'ning "_next" maydoni yo'naltirishni bajaradi.
         });
     }
 });
