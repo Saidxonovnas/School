@@ -57,16 +57,21 @@
             <h2>📝 Kurslarga Ro'yxatdan O'tish</h2>
             <p class="subtitle">Iltimos, kerakli kursni tanlang, ism va telefon raqamingizni kiriting. Menejerimiz siz bilan Telegram orqali bog'lanadi.</p>
 
-            <form id="register-form" class="register-form">
-                <input type="text" id="user-name" placeholder="Ismingizni kiriting" required>
+            <form id="register-form" class="register-form" 
+                action="https://formspree.io/f/SIZ_FORM_IDINGIZ" 
+                method="POST"
+            >
+                <input type="text" id="user-name" name="FIO" placeholder="Ismingizni kiriting" required>
                 
-                <select id="user-course" required>
-    <option value="" disabled selected>--- Kursni tanlang ---</option>
-    <option value="Hitoydan Tavar Zakaz Qilish Kursi" data-price="50000" id="course-china">Hitoydan Tavar Zakaz Qilish Kursi. Asl narx:100.000 (50.000 UZS - 50% Chegirma)</option>
-    <option value="Optom Tavarlar Kursi" data-price="125000" id="course-optom">Optom Tavarlar Kursi. Asl narx: 250.000(125.000 UZS - 50% Chegirma)</option>
-</select>
+                <select id="user-course" name="Kurs Nomi" required>
+                    <option value="" disabled selected>--- Kursni tanlang ---</option>
+                    <option value="Hitoydan Tavar Zakaz Qilish Kursi" data-price="50000" id="course-china">Hitoydan Tavar Zakaz Qilish Kursi. Asl narx:100.000 (50.000 UZS - 50% Chegirma)</option>
+                    <option value="Optom Tavarlar Kursi" data-price="125000" id="course-optom">Optom Tavarlar Kursi. Asl narx: 250.000(125.000 UZS - 50% Chegirma)</option>
+                </select>
                 
-                <input type="tel" id="user-phone" placeholder="+998 (XX) XXX-XX-XX" required>
+                <input type="tel" id="user-phone" name="Telefon Raqami" placeholder="+998 (XX) XXX-XX-XX" required>
+                
+                <input type="hidden" name="_next" value="https://saidxonovna.uz/payment.html" /> 
 
                 <button type="submit" id="submit-reg-btn" class="promo-btn">✅ Tayyor!</button>
             </form>
