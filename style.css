@@ -395,26 +395,21 @@ a {
     }
 }
 
-/* GOOGLE FORM (FIKR QOLDIRISH) UCHUN QO'SHIMCHA USLUBLAR */
-.feedback-section iframe {
-    /* Formani to'liq eniga moslash */
-    width: 100% !important; 
-    /* Balandligini kattalashtirish */
-    min-height: 700px; 
-    /* Chegarasiz ko'rinishi uchun */
-    border: 1px solid #ddd;
-    /* Uchlari yumaloq bo'lishi uchun */
-    border-radius: 10px;
-    /* Fon rangini oq qilish (agar forma orqasi shaffof bo'lsa) */
-    background-color: white; 
-    /* Kattalashganda soya effektini qo'shish */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-}
+/* GOOGLE FORM IFRAME UCHUN MAXSUS USLUBLAR */
 
-/* Mobil qurilmalar uchun (agar kerak bo'lsa) */
-@media (max-width: 768px) {
-    .feedback-section iframe {
-        min-height: 600px; /* Mobil qurilmalarda balandlikni biroz kamaytirish */
-    }
+/* Feedback bo'limidagi <iframe> elementini maqsad qilib olamiz */
+#feedback .content-wrapper div iframe {
+    /* Kenglikni to'liq qilib belgilash (900px content-wrapper ichida) */
+    width: 100% !important; 
+    /* Balandlikni ko'paytirish (650-700px tavsiya etiladi) */
+    min-height: 650px; 
+    /* Chegarasiz ko'rinishi uchun */
+    border: 1px solid #e0e0e0;
+    /* Uchlarini yumaloq qilish (Sizga yoqqan yumaloq chet effekti) */
+    border-radius: 12px;
+    /* Soya qo'shish, ko'rinishini yaxshilaydi */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Formaning orqa fonini aniq oq qilish */
+    background-color: white; 
 }
 
