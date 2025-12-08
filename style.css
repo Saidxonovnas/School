@@ -394,3 +394,27 @@ a {
         max-width: 90%;
     }
 }
+
+/* GOOGLE FORM (FIKR QOLDIRISH) UCHUN QO'SHIMCHA USLUBLAR */
+.feedback-section iframe {
+    /* Formani to'liq eniga moslash */
+    width: 100% !important; 
+    /* Balandligini kattalashtirish */
+    min-height: 700px; 
+    /* Chegarasiz ko'rinishi uchun */
+    border: 1px solid #ddd;
+    /* Uchlari yumaloq bo'lishi uchun */
+    border-radius: 10px;
+    /* Fon rangini oq qilish (agar forma orqasi shaffof bo'lsa) */
+    background-color: white; 
+    /* Kattalashganda soya effektini qo'shish */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Mobil qurilmalar uchun (agar kerak bo'lsa) */
+@media (max-width: 768px) {
+    .feedback-section iframe {
+        min-height: 600px; /* Mobil qurilmalarda balandlikni biroz kamaytirish */
+    }
+}
+
