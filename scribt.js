@@ -4,8 +4,6 @@ const TELEGRAM_URL = 'https://t.me/Saidxonovnas_School';
 const PAYMENT_PAGE_URL = 'payment.html'; 
 
 // Global o'zgaruvchi: Chegirma tugaydigan sana
-// Hozirgi sana 2025 yil 4 dekabr. Chegirmani 1 oydan keyinga, masalan, 2026 yil 31 yanvarga belgiladik.
-// Format: new Date(Yil, Oy-1, Kun)
 const PROMO_END_DATE = new Date(2026, 0, 31); // 2026 yil, Yanvar (0-oy), 31-kun
 
 // Global o'zgaruvchi: Narxlar
@@ -18,7 +16,6 @@ const DISCOUNT_PRICE_OPTOM = 125000;
 function isPromoActive() {
     const today = new Date();
     // Agar bugungi sana muddat tugashidan oldin bo'lsa, TRUE qaytadi
-    // Hozirgi sanani hisobga olgan holda chegirma hali faol
     return today <= PROMO_END_DATE;
 }
 
@@ -36,19 +33,18 @@ function updateCoursePrices() {
     const chinaCourse = document.getElementById('course-china');
     const optomCourse = document.getElementById('course-optom');
 
-    if (!chinaCourse || !optomCourse) return; // Agar register.html da bo'lmasak funksiyadan chiqadi
+    if (!chinaCourse || !optomCourse) return; 
 
     if (isPromoActive()) {
         // Chegirma faol bo'lsa
         chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(DISCOUNT_PRICE_CHINA)} - 50% Chegirma)`;
         optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(DISCOUNT_PRICE_OPTOM)} - 50% Chegirma)`;
-        // data-price'ga chegirmali narx o'rnatilgan (50000 / 125000)
     } else {
         // Chegirma tugagan bo'lsa
         chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(FULL_PRICE_CHINA)})`;
         optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(FULL_PRICE_OPTOM)})`;
         
-        // MUHIM: data-price'ni ham to'liq narxga yangilaymiz!
+        // data-price'ni ham to'liq narxga yangilaymiz!
         chinaCourse.setAttribute('data-price', FULL_PRICE_CHINA);
         optomCourse.setAttribute('data-price', FULL_PRICE_OPTOM);
     }
@@ -71,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function () {
         menuToggle.addEventListener('click', function () { 
             mainNav.classList.toggle('active'); 
         });
-        // ... (Menyuni yopish qismi)
+        // Menyuni yopish qismi
         mainNav.querySelectorAll('a').forEach(link => { 
             link.addEventListener('click', () => { 
                 mainNav.classList.remove('active'); 
@@ -82,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // --- 2. Formani Yuborish (register.html sahifasida ishlaydi) ---
     if (registerForm) {
         registerForm.addEventListener('submit', function (e) { 
-            // e.preventDefault(); qatori olib tashlandi, toki Formspree'ga ma'lumot yuborilsin.
+            // Bu yerda e.preventDefault() olib tashlandi, toki Formspree'ga ma'lumot yuborilsin.
 
             const name = document.getElementById('user-name').value;
             const courseSelect = document.getElementById('user-course');
@@ -94,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const selectedOption = courseSelect.options[courseSelect.selectedIndex];
             
-            // data-price dan narxni olamiz. Bu narx updateCoursePrices funksiyasi orqali yangilangan bo'lishi mumkin.
+            // data-price dan narxni olamiz.
             const priceToPay = parseFloat(selectedOption.getAttribute('data-price')); 
             
             
@@ -108,7 +104,7 @@ document.addEventListener('DOMContentLoaded', function () {
             
             console.log(`Foydalanuvchi Ro'yxatdan O'tish Ma'lumotlarini Saqladi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
 
-            // Oldingi setTimeout va window.location.href qismi olib tashlandi, chunki Formspree'ning "_next" maydoni yo'naltirishni bajaradi.
+            // Ma'lumotlar saqlanadi, keyin Formspree avtomatik ravishda _next URLga yo'naltiradi.
         });
     }
 });
