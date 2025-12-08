@@ -314,3 +314,83 @@ a {
         gap: 15px;
     }
 }
+/* --- YANGI QO'SHILGAN BO'LIMLAR UCHUN CSS --- */
+
+/* --- MUTAXASSISLAR BO'LIMI USLUBLARI (#teachers) --- */
+.teachers-section {
+    padding: 60px 5%;
+    background-color: var(--color-background);
+}
+
+.teacher-card-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.teacher-card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: 100%;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.teacher-card:hover {
+    transform: translateY(-5px);
+}
+
+.teacher-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid var(--color-secondary);
+}
+
+.teacher-card h3 {
+    color: var(--color-text);
+    margin-bottom: 5px;
+    font-size: 1.4em;
+}
+
+.teacher-card .specialty {
+    color: var(--color-primary);
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-size: 0.95em;
+}
+
+.teacher-card .bio {
+    font-size: 0.9em;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* --- GUVAHLIKLAR BO'LIMI USLUBLARI (#feedback) --- */
+.feedback-section {
+    padding: 60px 5%;
+    background-color: #f0f0f0; /* Yengil farqlash uchun rang */
+}
+
+.feedback-section .subtitle {
+    margin-bottom: 40px;
+}
+
+/* --- MOBIL MOSLASHUV (768px dan pastda) bo'limi ichiga qo'shilishi kerak bo'lgan qismlar */
+@media (max-width: 768px) {
+    .teacher-card-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .teacher-card {
+        max-width: 90%;
+    }
+}
