@@ -32,7 +32,7 @@
                     <li><a href="#home">Bosh Sahifa</a></li>
                     <li><a href="#courses">Kurslar Ro'yxati</a></li>
                     <li><a href="#teachers">Mutaxassislar</a></li>
-                    <li><a href="#feedback">Fikrlar</a></li>
+                    <li><a href="#feedback">Fikr Qoldirish</a></li>
                     <li><a href="#about">Biz Haqimizda</a></li>
                     <li><a href="#contact">Aloqa</a></li>
                     <li><a href="#blog">Blog</a></li>
@@ -109,63 +109,47 @@
             </p>
         </div>
     </section>
-    
+
     <section id="teachers" class="teachers-section section-center">
         <h2>👨‍🏫 Bizning Mutaxassislarimiz</h2>
         <div class="content-wrapper">
             <p class="subtitle">Sizni o'z sohasining malakali mutaxassislari shaxsiy tajribalari asosida o'qitishadi. Ular nazariyani emas, balki amaliy natijalarni taqdim etishadi.</p>
             
-            <div class="teacher-card-container">
-                <div class="teacher-card">
-                    <img src="teacher_1.jpg" alt="Ali Valiyev - Xitoy Ekspert" class="teacher-img">
+            <div class="course-list">
+                <div class="course-card">
+                    <img src="teacher_1.jpg" alt="Ali Valiyev - Xitoy Ekspert" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
                     <h3>Ali Valiyev</h3>
                     <p class="specialty">Xitoydan Tavar Zakaz Qilish Eksperti</p>
-                    <p class="bio">10 yillik savdo tajribasiga ega, 200 dan ortiq shogirdlarga yo'l ko'rsatgan. Xitoy savdo tizimini A'dan Z'gacha biladi.</p>
+                    <p class="bio" style="font-size: 0.9em;">10 yillik savdo tajribasiga ega, 200 dan ortiq shogirdlarga yo'l ko'rsatgan. Xitoy savdo tizimini A'dan Z'gacha biladi.</p>
                 </div>
-                <div class="teacher-card">
-                    <img src="teacher_2.jpg" alt="Dildora G'anieva - Optom" class="teacher-img">
+                <div class="course-card">
+                    <img src="teacher_2.jpg" alt="Dildora G'anieva - Optom" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px;">
                     <h3>Dildora G'anieva</h3>
                     <p class="specialty">Optom Savdoda Katta Tajriba</p>
-                    <p class="bio">Katta hajmda optom savdo qilish bo'yicha 7 yillik amaliy tajribaga ega. Foydali xarid qilish strategiyalarini o'rgatadi.</p>
+                    <p class="bio" style="font-size: 0.9em;">Katta hajmda optom savdo qilish bo'yicha 7 yillik amaliy tajribaga ega. Foydali xarid qilish strategiyalarini o'rgatadi.</p>
                 </div>
             </div>
         </div>
     </section>
-
     <section id="feedback" class="feedback-section section-center">
-        <h2>🌟 Bitiruvchilar Fikri va Guvohliklar</h2>
+        <h2>✍️ Fikr Qoldirish</h2>
         <div class="content-wrapper">
-            <p class="subtitle">Kurslarimizni tugatgan o'quvchilarning real mulohazalari va erishgan natijalari. Siz ham shu natijalarga erishishingiz mumkin!</p>
+            <p class="subtitle">Kurslarimiz haqidagi fikr va mulohazalaringizni ushbu forma orqali yuboring. Eng yaxshi fikrlar saytga joylashtiriladi!</p>
             
-            <div id="disqus_thread"></div>
-            <script>
-                /**
-                 * Disqus sharhlar tizimini yuklash uchun konfiguratsiya
-                 * MUHIM: SAIDXONOVNAS_DISQUS_SHORTNAME o'rniga o'zingizning haqiqiy nomingizni kiriting!
-                 */
-                var disqus_config = function () {
-                    // Sayt manzili. Agar saytda URL o'zgarib tursa, buni yangilash kerak.
-                    this.page.url = window.location.href;  
-                    // Sahifa identifikatori. Bosh sahifa uchun index.html
-                    this.page.identifier = 'index.html'; 
-                };
+            <div style="margin-top: 30px; text-align: center;">
+                
+                <p>
+                    **Kerakli harakat:** O'zingizning Google Formangizni yaratib, uning publik linkini `<iframe src="...">` ichiga joylashtiring.
+                    <br><br>
+                    **<a href="https://docs.google.com/forms" target="_blank" class="action-btn">Google Formani yaratish uchun bosing</a>**
+                </p>
 
-                (function() { // Sharhlar bo'limini yuklaydigan kod
-                    var d = document, s = d.createElement('script');
-                    s.src = 'https://SAIDXONOVNAS_DISQUS_SHORTNAME.disqus.com/embed.js'; 
-                    s.setAttribute('data-timestamp', +new Date());
-                    (d.head || d.body).appendChild(s);
-                })();
-            </script>
-            <noscript>
-                Iltimos, sharhlarni ko'rish uchun JavaScriptni yoqing. 
-                <a href="https://disqus.com/?ref_noscript">Disqus tomonidan quvvatlanadi.</a>
-            </noscript>
-            <script id="dsq-count-scr" src="//SAIDXONOVNAS_DISQUS_SHORTNAME.disqus.com/count.js" async></script>
-            
+                <div class="comments-placeholder" style="padding: 50px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: center; margin-top: 20px;">
+                    <p style="font-weight: 600;">**!!! Sizning Google Formangiz IFRAME kodi bu yerga joylashtiriladi !!!**</p>
+                </div>
+            </div>
         </div>
     </section>
-
     <section id="blog" class="blog-section section-center">
         <h2>📰 Blog va Yangiliklar</h2>
         <p class="content-wrapper">
