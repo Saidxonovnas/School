@@ -128,7 +128,7 @@
                     <p class="specialty">Optom Savdoda Katta Tajriba</p>
                     <p class="bio">Katta hajmda optom savdo qilish bo'yicha 7 yillik amaliy tajribaga ega. Foydali xarid qilish strategiyalarini o'rgatadi.</p>
                 </div>
-                </div>
+            </div>
         </div>
     </section>
 
@@ -137,10 +137,32 @@
         <div class="content-wrapper">
             <p class="subtitle">Kurslarimizni tugatgan o'quvchilarning real mulohazalari va erishgan natijalari. Siz ham shu natijalarga erishishingiz mumkin!</p>
             
-            <div class="comments-placeholder" style="padding: 50px; background: #fff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); text-align: left;">
-                <h3>Sharhlar Bo'limi Kiritilmoqda...</h3>
-                <p>Anonim yoki Publik sharh qoldirish imkonini beruvchi Disqus yoki Hyvor Talk kabi platforma kodi bu yerga joylashtiriladi.</p>
-                </div>
+            <div id="disqus_thread"></div>
+            <script>
+                /**
+                 * Disqus sharhlar tizimini yuklash uchun konfiguratsiya
+                 * MUHIM: SAIDXONOVNAS_DISQUS_SHORTNAME o'rniga o'zingizning haqiqiy nomingizni kiriting!
+                 */
+                var disqus_config = function () {
+                    // Sayt manzili. Agar saytda URL o'zgarib tursa, buni yangilash kerak.
+                    this.page.url = window.location.href;  
+                    // Sahifa identifikatori. Bosh sahifa uchun index.html
+                    this.page.identifier = 'index.html'; 
+                };
+
+                (function() { // Sharhlar bo'limini yuklaydigan kod
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://SAIDXONOVNAS_DISQUS_SHORTNAME.disqus.com/embed.js'; 
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                })();
+            </script>
+            <noscript>
+                Iltimos, sharhlarni ko'rish uchun JavaScriptni yoqing. 
+                <a href="https://disqus.com/?ref_noscript">Disqus tomonidan quvvatlanadi.</a>
+            </noscript>
+            <script id="dsq-count-scr" src="//SAIDXONOVNAS_DISQUS_SHORTNAME.disqus.com/count.js" async></script>
+            
         </div>
     </section>
 
