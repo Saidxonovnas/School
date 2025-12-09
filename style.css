@@ -426,3 +426,16 @@ a {
     background-color: white; 
 }
 
+/* style (1).css ga QO'SHILDI: Aloqa Ikonkalari Uslubi */
+.contact-section .content-wrapper a {
+    color: var(--color-text); /* Ikonkaning rangi matn rangida bo'lishi */
+    font-size: 2.5em;       /* Ikonka o'lchami */
+    margin: 0 15px;
+    transition: color 0.3s;
+    display: inline-block; 
+}
+
+.contact-section .content-wrapper a:hover {
+    color: var(--color-secondary); /* Ustiga borganingizda rang o'zgarishi */
+}
+
