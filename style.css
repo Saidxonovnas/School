@@ -37,21 +37,26 @@ a {
     text-decoration: none;
 }
 
-/* HEADER VA NAVIGATSIYA USLUBI */
-/* style (1).css da ".main-header" qismini ALMASHTIRING: */
+/* HEADER VA NAVIGATSIYA USLUBI (style (1).css) */
 .main-header {
     background-color: var(--color-text);
     color: var(--color-background);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 15px 2%;
-    /* 🛑 QO'SHIMCHA: Bosh qismni qotirish */
+    padding: 20px 5%;
+    /* 🛑 MUHIM: Bosh qismni qotirish uchun (Desktopda ham, Mobileda ham ishlaydi) */
     position: fixed; 
     top: 0;          
     width: 100%;     
-    z-index: 100;   
+    z-index: 1000;   /* Boshqa elementlardan ustun turishi uchun */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+}
+
+/* 🛑 QO'SHILDI: Header ostidan kontentni tushirish */
+#home.hero-section {
+    /* Header balandligi (taxminan 130px) ga mos padding berish */
+    padding-top: 130px; 
 }
 
 /* style (1).css ga `#home` uchun QO'SHING: */
