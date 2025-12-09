@@ -83,6 +83,43 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
+    // scribt (1).js (To'g'irlangan menyu funksiyasi)
+
+document.addEventListener('DOMContentLoaded', function () {
+    
+    // 1. O'zgaruvchilarni topamiz
+    const menuToggle = document.getElementById('menuToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    // 2. Hamburger menyu funksiyasi
+    if (menuToggle && mainNav) {
+        menuToggle.addEventListener('click', function () {
+            // Menyuni ochish/yopish
+            mainNav.classList.toggle('active');
+            // 🛑 MUHIM: Tugmaning o'ziga ham 'active' class'ini qo'shish/olib tashlash
+            menuToggle.classList.toggle('active'); 
+        });
+
+        // 3. Menyuni yopish (havolaga bosilganda)
+        mainNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mainNav.classList.remove('active');
+                // 🛑 MUHIM: Menyuni yopganda ikonkani asl holiga qaytarish
+                menuToggle.classList.remove('active');
+            });
+        });
+    }
+
+    // ... (Boshqa funksiyalar davom etadi)
+    
+    // updateCoursePrices() funksiyasini chaqirish qismi
+    if (document.getElementById('course-list')) {
+        updateCoursePrices();
+    }
+    
+    // ... (Boshqa funksiyalar)
+});
+
     // --- 2. Formani Yuborish (register.html sahifasida ishlaydi) ---
     if (registerForm) {
         registerForm.addEventListener('submit', function (e) { 
