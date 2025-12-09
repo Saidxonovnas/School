@@ -139,7 +139,7 @@ a {
     padding: 30px 20px;
     margin: 30px auto;
     border-radius: 12px;
-    max-width: 1200px;
+    max-width: 600px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     display: flex;
     flex-direction: column;
