@@ -28,102 +28,64 @@ function formatPrice(amount) {
     }).format(amount); 
 }
 
-// Faqat register.html sahifasida ishlaydigan yangi funksiya:
+// Faqat register.html sahifasida ishlaydigan funksiya:
 function updateCoursePrices() {
     const chinaCourse = document.getElementById('course-china');
     const optomCourse = document.getElementById('course-optom');
 
     if (!chinaCourse || !optomCourse) return; 
 
-    if (isPromoActive()) {
-        // Chegirma faol bo'lsa
-        chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(DISCOUNT_PRICE_CHINA)} - 50% Chegirma)`;
-        optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(DISCOUNT_PRICE_OPTOM)} - 50% Chegirma)`;
-    } else {
-        // Chegirma tugagan bo'lsa
-        chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(FULL_PRICE_CHINA)})`;
-        optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(FULL_PRICE_OPTOM)})`;
+    const chinaPrice = isPromoActive() ? DISCOUNT_PRICE_CHINA : FULL_PRICE_CHINA;
+    const optomPrice = isPromoActive() ? DISCOUNT_PRICE_OPTOM : FULL_PRICE_OPTOM;
+    const discountText = isPromoActive() ? ' - 50% Chegirma' : '';
+
+    // HTML ichidagi tanlov matnini yangilash
+    chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(chinaPrice)}${discountText})`;
+    optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(optomPrice)}${discountText})`;
         
-        // data-price'ni ham to'liq narxga yangilaymiz!
-        chinaCourse.setAttribute('data-price', FULL_PRICE_CHINA);
-        optomCourse.setAttribute('data-price', FULL_PRICE_OPTOM);
-    }
+    // HTML ichidagi data-price atributini yangilash (Forma yuborilganda to'g'ri narxni olish uchun)
+    chinaCourse.setAttribute('data-price', chinaPrice);
+    optomCourse.setAttribute('data-price', optomPrice);
 }
 
 
 document.addEventListener('DOMContentLoaded', function () {
+    // Asosiy elementlarni topish
     const menuToggle = document.getElementById('menuToggle'); 
     const mainNav = document.getElementById('mainNav'); 
-    const registerForm = document.getElementById('register-form'); 
-    
-    // updateCoursePrices ni ishga tushiramiz (register.html dagi narxlarni sozlaydi)
-    if (registerForm) {
+    // HTML kodingizdagi ID 'registrationForm' edi
+    const registerForm = document.getElementById('registrationForm'); 
+
+
+    // --- 1. Narxlarni yangilash (agar forma sahifasida bo'lsak) ---
+    if (document.getElementById('course-list')) { 
         updateCoursePrices();
     }
 
 
-    // --- 1. Hamburger menyu funksiyasi ---
-    // scribt (1).js da ALMASHTIRILADI (taxminan 55-satrlar):
-
-    // 🛑 Hamburger menyu funksiyasi (Tuzatilgan)
+    // --- 2. Hamburger menyu funksiyasi (Mobil menyu tuzatishlari) ---
     if (menuToggle && mainNav) { 
         menuToggle.addEventListener('click', function () { 
+            // Menyuni ochish/yopish
             mainNav.classList.toggle('active'); 
-            // 🛑 QO'SHILDI: Ikonkani ham o'zgartirish uchun
+            // 🛑 MUHIM: Ikonka (3 chiziqcha) X ga aylanishi uchun
             menuToggle.classList.toggle('active'); 
         });
         
-        // Menyuni yopish qismi
+        // Menyuni yopish qismi (havolaga bosilganda)
         mainNav.querySelectorAll('a').forEach(link => { 
             link.addEventListener('click', () => { 
                 mainNav.classList.remove('active'); 
-                // 🛑 QO'SHILDI: Ikonkani asl holatiga qaytarish
+                // Menyuni yopganda ikonkani asl holiga qaytarish
                 menuToggle.classList.remove('active'); 
             });
         });
     }
 
-    // scribt (1).js (To'g'irlangan menyu funksiyasi)
-
-document.addEventListener('DOMContentLoaded', function () {
-    
-    // 1. O'zgaruvchilarni topamiz
-    const menuToggle = document.getElementById('menuToggle');
-    const mainNav = document.getElementById('mainNav');
-
-    // 2. Hamburger menyu funksiyasi
-    if (menuToggle && mainNav) {
-        menuToggle.addEventListener('click', function () {
-            // Menyuni ochish/yopish
-            mainNav.classList.toggle('active');
-            // 🛑 MUHIM: Tugmaning o'ziga ham 'active' class'ini qo'shish/olib tashlash
-            menuToggle.classList.toggle('active'); 
-        });
-
-        // 3. Menyuni yopish (havolaga bosilganda)
-        mainNav.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => {
-                mainNav.classList.remove('active');
-                // 🛑 MUHIM: Menyuni yopganda ikonkani asl holiga qaytarish
-                menuToggle.classList.remove('active');
-            });
-        });
-    }
-
-    // ... (Boshqa funksiyalar davom etadi)
-    
-    // updateCoursePrices() funksiyasini chaqirish qismi
-    if (document.getElementById('course-list')) {
-        updateCoursePrices();
-    }
-    
-    // ... (Boshqa funksiyalar)
-});
-
-    // --- 2. Formani Yuborish (register.html sahifasida ishlaydi) ---
+    // --- 3. Formani Yuborish (register.html sahifasida ishlaydi) ---
     if (registerForm) {
         registerForm.addEventListener('submit', function (e) { 
-            // Bu yerda e.preventDefault() olib tashlandi, toki Formspree'ga ma'lumot yuborilsin.
+            // Formspree ga ma'lumot yuborish uchun e.preventDefault() olib tashlandi.
 
             const name = document.getElementById('user-name').value;
             const courseSelect = document.getElementById('user-course');
@@ -138,21 +100,21 @@ document.addEventListener('DOMContentLoaded', function () {
             // data-price dan narxni olamiz.
             const priceToPay = parseFloat(selectedOption.getAttribute('data-price')); 
             
-            
             const formattedPrice = formatPrice(priceToPay); // Narxni formatlash
 
-            // scribt (1).js faylidagi qism:
-// ...
-// Ma'lumotlarni localStoragga saqlash (payment.html sahifasi uchun zarur)
-localStorage.setItem('regName', name); 
-localStorage.setItem('regCourse', course); 
-localStorage.setItem('regPhone', phone); 
-localStorage.setItem('regPrice', formattedPrice); 
-// ...
+            // Ma'lumotlarni localStoragga saqlash (payment.html sahifasi uchun zarur)
+            localStorage.setItem('regName', name); 
+            localStorage.setItem('regCourse', course); 
+            localStorage.setItem('regPhone', phone); 
+            localStorage.setItem('regPrice', formattedPrice); 
             
             console.log(`Foydalanuvchi Ro'yxatdan O'tish Ma'lumotlarini Saqladi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
 
-            // Ma'lumotlar saqlanadi, keyin Formspree avtomatik ravishda _next URLga yo'naltiradi.
+            // Ma'lumotlar saqlanadi, keyin Formspree avtomatik ravishda to'lov sahifasiga yo'naltiradi.
         });
     }
+
+    // 4. payment.html sahifasidagi logikani bu yerga qo'shish shart emas.
+    // payment.html dagi ma'lumotlarni chiqarish logikasi o'sha faylning ichida bo'lishi kerak.
+
 });
