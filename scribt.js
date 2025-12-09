@@ -63,14 +63,22 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // --- 1. Hamburger menyu funksiyasi ---
+    // scribt (1).js da ALMASHTIRILADI (taxminan 55-satrlar):
+
+    // 🛑 Hamburger menyu funksiyasi (Tuzatilgan)
     if (menuToggle && mainNav) { 
         menuToggle.addEventListener('click', function () { 
             mainNav.classList.toggle('active'); 
+            // 🛑 QO'SHILDI: Ikonkani ham o'zgartirish uchun
+            menuToggle.classList.toggle('active'); 
         });
+        
         // Menyuni yopish qismi
         mainNav.querySelectorAll('a').forEach(link => { 
             link.addEventListener('click', () => { 
                 mainNav.classList.remove('active'); 
+                // 🛑 QO'SHILDI: Ikonkani asl holatiga qaytarish
+                menuToggle.classList.remove('active'); 
             });
         });
     }
