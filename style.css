@@ -45,7 +45,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px 5%;
+    padding: 15px 2%;
     /* 🛑 QO'SHIMCHA: Bosh qismni qotirish */
     position: fixed; 
     top: 0;          
