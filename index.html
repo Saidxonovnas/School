@@ -310,77 +310,28 @@
 
         </div>
 
-    </section>
     <section id="contact" class="contact-section section-center">
-    <h2>📞 Aloqa</h2>
-    <div class="content-wrapper">
-        <a href="https://instagram.com/Saidxonovnas_School" target="_blank" aria-label="Instagram">
-    <i class="fab fa-instagram"></i>
-</a>
-        </div> 
-    </div> </section>
 
+        <h2>📞 Aloqa</h2>
 
+        <div class="content-wrapper">
 
+            <p>Savol va takliflar uchun biz bilan bog'laning:</p>
+
+            <p>Telefon: +998 (94) 516-51-67</p>
+
+            <a href="https://wa.me/998945165167" target="_blank" aria-label="WhatsApp">
+                <i class="fab fa-whatsapp"></i> 
+            </a>
+
+            <a href="https://t.me/Saidxonovnas_School" target="_blank" aria-label="Telegram">
+                <i class="fab fa-telegram-plane"></i> 
+            </a>
+
+            <a href="https://instagram.com/Saidxonovnas_School" target="_blank" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+            </a>
+            
+        </div> </section>
+    
     <footer class="main-footer">
-        <p>&copy; 2025 Saidxonovnas School. Barcha huquqlar himoyalangan.</p>
-        <div class="social-links">
-            <a href="https://t.me/Saidxonovnas_School" target="_blank">Telegram</a>
-            <a href="https://instagram.com/Saidxonovnas_School" target="_blank">Instagram</a>
-        </div>
-    </footer>
-
-    <script src="scribt.js"></script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const phoneInput = document.getElementById('user-phone');
-
-            phoneInput.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\D/g, ''); 
-
-                if (value.startsWith('998')) {
-                    value = value.slice(0, 12); 
-                } else if (value.length > 0) {
-                     if (value.length <= 9) { 
-                         value = '998' + value;
-                     }
-                }
-                
-                let formattedValue = '';
-                
-                if (value.length >= 3) {
-                    formattedValue = '+998';
-                    
-                    if (value.length > 3) formattedValue += ' ';
-
-                    if (value.length > 5) {
-                        formattedValue += `(${value.slice(3, 5)})`;
-                    } else if (value.length > 3) {
-                        formattedValue += `(${value.slice(3)}`;
-                    }
-
-                    if (value.length > 5) {
-                        formattedValue += ` ${value.slice(5, 8)}`;
-                    }
-
-                    if (value.length > 8) {
-                        formattedValue += `-${value.slice(8, 10)}`;
-                    }
-
-                    if (value.length > 10) {
-                        formattedValue += `-${value.slice(10, 12)}`;
-                    }
-                } else {
-                    formattedValue = value; 
-                }
-
-                e.target.value = formattedValue.trim();
-            });
-        });
-    </script>
-</body>
-
-
-
-</html>
