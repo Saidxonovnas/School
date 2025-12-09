@@ -443,3 +443,9 @@ a {
     justify-content: space-between; 
 }
 
+/* style (1).css da qo'shiladigan qism */
+
+/* Header'ni qotirish natijasida paydo bo'lgan o'zgarishni tuzatish */
+#home.hero-section {
+    padding-top: 100px; /* Header balandligiga mos padding (taxminan 100px) */
+}
