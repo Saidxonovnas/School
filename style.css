@@ -415,7 +415,7 @@ a {
     /* Kenglikni to'liq qilib belgilash (900px content-wrapper ichida) */
     width: 100% !important; 
     /* Balandlikni ko'paytirish (650-700px tavsiya etiladi) */
-    min-height: 650px; 
+    min-height: 1200px; 
     /* Chegarasiz ko'rinishi uchun */
     border: 1px solid #e0e0e0;
     /* Uchlarini yumaloq qilish (Sizga yoqqan yumaloq chet effekti) */
