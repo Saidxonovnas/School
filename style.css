@@ -413,3 +413,33 @@ a {
     background-color: white; 
 }
 
+/* style (1).css da qo'shiladigan qism (oxiriga qo'shing) */
+
+/* --- ALOQA VA IJTIMOIY HAVOLALAR USLUBLARI --- */
+.contact-section .content-wrapper a {
+    color: var(--color-text); /* Ikonka rangi */
+    font-size: 2em;
+    margin: 0 10px;
+    transition: color 0.3s;
+}
+
+.contact-section .content-wrapper a:hover {
+    color: var(--color-secondary); /* Hover effekti */
+}
+
+/* Footer-dagi ijtimoiy havolalar uslubi */
+.main-footer .social-links a {
+    font-size: 1.5em; 
+    color: var(--color-background); /* Fon rangi bilan kontrast yaratish */
+    margin-left: 15px;
+}
+
+.main-footer .social-links a:hover {
+    color: var(--color-primary);
+}
+
+.main-footer {
+    /* Footer-ni qayta markazlashtirish (agar kerak bo'lsa) */
+    justify-content: space-between; 
+}
+
