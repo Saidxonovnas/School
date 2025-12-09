@@ -439,3 +439,38 @@ a {
     color: var(--color-secondary); /* Ustiga borganingizda rang o'zgarishi */
 }
 
+/* 🛑 O'ZGARTIRILDI: Aloqa Bo'limini Kengaytirish (Yangi Kiritilgan Qism) */
+.contact-section {
+    /* Balandligi bo'yicha kengaytirish: 100px yuqoridan va pastdan bo'shliq beradi */
+    padding: 100px 5%; 
+}
+
+/* 🛑 QO'SHILDI: Aloqa Qismi Kontentini Kengaytirish (Eni bo'yicha) */
+#contact .content-wrapper {
+    max-width: 1200px; /* Kontentning maksimal eni */
+}
+
+/* --- ALOQA VA FOOTER BO'LIMI USLUBLARI (#contact) --- */
+.contact-section .content-wrapper a {
+    color: var(--color-text); 
+    font-size: 2.5em; 
+    margin: 0 15px;
+    transition: color 0.3s;
+    display: inline-block; 
+}
+
+.contact-section .content-wrapper a:hover {
+    color: var(--color-secondary); 
+}
+
+/* Footer ijtimoiy havolalarini tiklash */
+.main-footer .social-links a {
+    font-size: 1.5em; 
+    color: var(--color-background); 
+    margin-left: 15px;
+    transition: color 0.3s;
+}
+
+.main-footer .social-links a:hover {
+    color: var(--color-primary);
+}
