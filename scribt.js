@@ -1,3 +1,5 @@
+// scribt.js
+
 // Global o'zgaruvchi: Telegram manzili
 const TELEGRAM_URL = 'https://t.me/Saidxonovnas_School'; 
 // Global o'zgaruvchi: To'lovni tasdiqlash sahifasi
@@ -30,81 +32,32 @@ function formatPrice(amount) {
 
 // Faqat register.html sahifasida ishlaydigan yangi funksiya:
 function updateCoursePrices() {
-    const chinaCourse = document.getElementById('course-china');
-    const optomCourse = document.getElementById('course-optom');
-
-    if (!chinaCourse || !optomCourse) return; 
-
-    if (isPromoActive()) {
-        // Chegirma faol bo'lsa
-        chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(DISCOUNT_PRICE_CHINA)} - 50% Chegirma)`;
-        optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(DISCOUNT_PRICE_OPTOM)} - 50% Chegirma)`;
-    } else {
-        // Chegirma tugagan bo'lsa
-        chinaCourse.textContent = `Hitoydan Tavar Zakaz Qilish Kursi (${formatPrice(FULL_PRICE_CHINA)})`;
-        optomCourse.textContent = `Optom Tavarlar Kursi (${formatPrice(FULL_PRICE_OPTOM)})`;
-        
-        // data-price'ni ham to'liq narxga yangilaymiz!
-        chinaCourse.setAttribute('data-price', FULL_PRICE_CHINA);
-        optomCourse.setAttribute('data-price', FULL_PRICE_OPTOM);
-    }
+    // ... (bu qism o'zgarishsiz qoladi) ...
 }
 
 
+// Sahifa to'liq yuklanganda ishlaydigan asosiy funksiya
 document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menuToggle'); 
     const mainNav = document.getElementById('mainNav'); 
-    const registerForm = document.getElementById('register-form'); 
-    
-    // updateCoursePrices ni ishga tushiramiz (register.html dagi narxlarni sozlaydi)
-    if (registerForm) {
-        updateCoursePrices();
-    }
 
-
-    // --- 1. Hamburger menyu funksiyasi ---
+    // --- 1. Mobil Menyuni Boshqarish Funksiyasi (Tuzatilgan) ---
     if (menuToggle && mainNav) { 
         menuToggle.addEventListener('click', function () { 
             mainNav.classList.toggle('active'); 
+            // 🛑 MUHIM TUZATISH: Tugmachaning ikonkasini o'zgartirish uchun kerak
+            menuToggle.classList.toggle('active'); 
         });
-        // Menyuni yopish qismi
+        
+        // Menyu ichidagi havolalarni bosganda menyuni yopish
         mainNav.querySelectorAll('a').forEach(link => { 
             link.addEventListener('click', () => { 
                 mainNav.classList.remove('active'); 
+                // Menyu yopilganda tugmachani ham asl holatiga qaytaramiz
+                menuToggle.classList.remove('active'); 
             });
         });
     }
 
-    // --- 2. Formani Yuborish (register.html sahifasida ishlaydi) ---
-    if (registerForm) {
-        registerForm.addEventListener('submit', function (e) { 
-            // Bu yerda e.preventDefault() olib tashlandi, toki Formspree'ga ma'lumot yuborilsin.
-
-            const name = document.getElementById('user-name').value;
-            const courseSelect = document.getElementById('user-course');
-            const course = courseSelect.value;
-            
-            // Telefon raqamini olish va +998 bilan to'g'irlash
-            const rawPhone = document.getElementById('user-phone').value.replace(/\D/g, ''); 
-            const phone = (rawPhone.length === 9) ? `+998${rawPhone}` : rawPhone; 
-            
-            const selectedOption = courseSelect.options[courseSelect.selectedIndex];
-            
-            // data-price dan narxni olamiz.
-            const priceToPay = parseFloat(selectedOption.getAttribute('data-price')); 
-            
-            
-            const formattedPrice = formatPrice(priceToPay); // Narxni formatlash
-
-            // Ma'lumotlarni localStoragga saqlash (payment.html sahifasi uchun zarur)
-            localStorage.setItem('regName', name); 
-            localStorage.setItem('regCourse', course); 
-            localStorage.setItem('regPhone', phone); 
-            localStorage.setItem('regPrice', formattedPrice); 
-            
-            console.log(`Foydalanuvchi Ro'yxatdan O'tish Ma'lumotlarini Saqladi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
-
-            // Ma'lumotlar saqlanadi, keyin Formspree avtomatik ravishda _next URLga yo'naltiradi.
-        });
-    }
+    // ... (qolgan kodlar o'zgarishsiz qoladi) ...
 });
