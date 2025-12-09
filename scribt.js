@@ -141,11 +141,14 @@ document.addEventListener('DOMContentLoaded', function () {
             
             const formattedPrice = formatPrice(priceToPay); // Narxni formatlash
 
-            // Ma'lumotlarni localStoragga saqlash (payment.html sahifasi uchun zarur)
-            localStorage.setItem('regName', name); 
-            localStorage.setItem('regCourse', course); 
-            localStorage.setItem('regPhone', phone); 
-            localStorage.setItem('regPrice', formattedPrice); 
+            // scribt (1).js faylidagi qism:
+// ...
+// Ma'lumotlarni localStoragga saqlash (payment.html sahifasi uchun zarur)
+localStorage.setItem('regName', name); 
+localStorage.setItem('regCourse', course); 
+localStorage.setItem('regPhone', phone); 
+localStorage.setItem('regPrice', formattedPrice); 
+// ...
             
             console.log(`Foydalanuvchi Ro'yxatdan O'tish Ma'lumotlarini Saqladi: Ism: ${name}, Kurs: ${course}, Telefon: ${phone}`);
 
