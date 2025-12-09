@@ -38,6 +38,7 @@ a {
 }
 
 /* HEADER VA NAVIGATSIYA USLUBI */
+/* style (1).css da ".main-header" qismini ALMASHTIRING: */
 .main-header {
     background-color: var(--color-text);
     color: var(--color-background);
@@ -45,6 +46,18 @@ a {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
+    /* 🛑 QO'SHIMCHA: Bosh qismni qotirish */
+    position: fixed; 
+    top: 0;          
+    width: 100%;     
+    z-index: 1000;   
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2); 
+}
+
+/* style (1).css ga `#home` uchun QO'SHING: */
+#home.hero-section {
+    /* Header balandligi taxminan 130px */
+    padding-top: 130px; 
 }
 
 /* Logo (Rasm + Matn) uslubi */
